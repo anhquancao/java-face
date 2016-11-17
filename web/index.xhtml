@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./newTemplate.xhtml">
+
+            <ui:define name="left">
+                <h:form>
+                    <ui:repeat value="#{employeeBean.employees}" var="e">
+                        <li><h:commandLink value="#{e.firstName}" action="#{employeeBean.loadSalariesByEmployee(e.empNo)}"/></li>
+                    </ui:repeat>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <h:dataTable value="#{employeeBean.salaries}" var="s" class="tableSalary">
+                        <h:column>
+                            <f:facet name="header">Empno</f:facet>
+                            <h:outputText value="#{s.salary}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Action</f:facet>
+                            <h:commandLink value="edit" action="#{employeeBean.loadDetailSalary(s.salariesPK.fromDate, s.salariesPK.empNo)}"/>
+                            <h:commandLink value="remove" style="margin-left: 10px" action="#{employeeBean.deleteSalary(s.salariesPK.empNo,s.salariesPK.fromDate)}"/>
+                            <h:commandLink value="update" style="margin-left: 10px"/>
+                            <h:commandLink value="add new" style="margin-left: 10px"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

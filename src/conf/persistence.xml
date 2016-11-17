@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="WebApplication1PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>entity.Titles</class>
+    <class>entity.Employees</class>
+    <class>entity.EmpNoProduction</class>
+    <class>entity.DeptEmp</class>
+    <class>entity.LastNamManager</class>
+    <class>entity.Salaries</class>
+    <class>entity.MaxFromDate</class>
+    <class>entity.AvgSalary</class>
+    <class>entity.AverageSalary</class>
+    <class>entity.DeptEmpLatestDate</class>
+    <class>entity.Departments</class>
+    <class>entity.CurrentDeptEmp</class>
+    <class>entity.LastNameManager</class>
+    <class>entity.DeptManager</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/employees?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="colorme"/>
+    </properties>
+  </persistence-unit>
+</persistence>
