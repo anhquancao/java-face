@@ -44,6 +44,22 @@ public class EmployeeBean {
         salaries = employeeDAO.loadSalariesByEmpno(key.getEmpNo());
     }
     
+    public String updateSalary(){
+        employeeDAO.updateSalary(this.salary);
+        salaries = employeeDAO.loadSalariesByEmpno(this.salary.getSalariesPK().getEmpNo());
+        return "index";
+    }
+    
+    public String goBack(){
+        this.employees = employeeDAO.loadAllEmployees();
+        return "index";
+    }
+    
+    public String addNewSalary(){
+        this.salary = new Salaries();
+        return "new";
+    }
+    
     public List<Employees> getEmployees() {
         return employees;
     }

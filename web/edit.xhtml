@@ -15,17 +15,24 @@
 
             <ui:define name="content">
                 <h:form>
-                    <h:panelGrid columns="2"> 
+                    <h:panelGrid columns="3"> 
                         <h:outputLabel value="Salary"/>
-                        <h:outputText value="#{employeeBean.salary.salary}"/>
-                        <!--<h:message for="salary"/>-->
+                        <h:inputText value="#{employeeBean.salary.salary}" id="txtSalary" required="true" requiredMessage="Bắt buộc nhập"/>
+                        <h:message for="txtSalary"/>
+                        
+                        <h:outputLabel value="to Date"/>
+                        <h:inputText value="#{employeeBean.salary.toDate}" id="txtToDate" required="true" requiredMessage="phai nhap">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </h:inputText>
+                        <h:message for="txtToDate"/>
                         
                         <h:outputLabel value="Employee"/>
                         <h:selectOneMenu value="#{employeeBean.salary.salariesPK.empNo}">
                             <f:selectItems value="#{employeeBean.employees}" var="e" itemLabel="#{e.firstName}" itemValue="#{e.empNo}" />
                         </h:selectOneMenu>
                     </h:panelGrid>
-                          
+                    <h:commandButton value="Update" action="#{employeeBean.updateSalary()}"/>
+                    <h:commandButton value="Back" action="#{employeeBean.goBack()}"/>
                 </h:form>
             </ui:define>
 
