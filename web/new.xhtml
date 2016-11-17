@@ -20,8 +20,14 @@
                         <h:inputText value="#{employeeBean.salary.salary}" id="txtSalary" required="true" requiredMessage="Bắt buộc nhập"/>
                         <h:message for="txtSalary"/>
                         
+                        <h:outputLabel value="from Date"/>
+                        <h:inputText value="#{employeeBean.salary.salariesPK.fromDate}" id="txtFromDate" required="true" requiredMessage="phai nhap">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </h:inputText>
+                        <h:message for="txtFromDate"/>
+                        
                         <h:outputLabel value="to Date"/>
-                        <h:inputText value="#{employeeBean.salary.salariesPK.fromDate}" id="txtToDate" required="true" requiredMessage="phai nhap">
+                        <h:inputText value="#{employeeBean.salary.toDate}" id="txtToDate" required="true" requiredMessage="phai nhap">
                             <f:convertDateTime pattern="dd-MM-yyyy"/>
                         </h:inputText>
                         <h:message for="txtToDate"/>
@@ -31,7 +37,7 @@
                             <f:selectItems value="#{employeeBean.employees}" var="e" itemLabel="#{e.firstName}" itemValue="#{e.empNo}" />
                         </h:selectOneMenu>
                     </h:panelGrid>
-                    <h:commandButton value="Add" action="#{employeeBean.addNewSalary()}"/>
+                    <h:commandButton value="Add" action="#{employeeBean.saveSalary()}"/>
                     <h:commandButton value="Back" action="#{employeeBean.goBack()}"/>
                 </h:form>
             </ui:define>
