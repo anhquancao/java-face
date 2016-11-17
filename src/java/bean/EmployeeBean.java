@@ -57,7 +57,14 @@ public class EmployeeBean {
     
     public String addNewSalary(){
         this.salary = new Salaries();
+        this.salary.setSalariesPK(new SalariesPK());
         return "new";
+    }
+    
+    public String saveSalary(Salaries s){
+        employeeDAO.addNewSalary(s);
+//        this.salaries = employeeDAO.loadSalariesByEmpno(s.getSalariesPK().getEmpNo());
+        return "index";
     }
     
     public List<Employees> getEmployees() {

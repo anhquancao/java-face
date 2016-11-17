@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./newTemplate.xhtml">
+
+            <ui:define name="left">
+                Add new salary
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="3"> 
+                        <h:outputLabel value="Salary"/>
+                        <h:inputText value="#{employeeBean.salary.salary}" id="txtSalary" required="true" requiredMessage="Bắt buộc nhập"/>
+                        <h:message for="txtSalary"/>
+                        
+                        <h:outputLabel value="to Date"/>
+                        <h:inputText value="#{employeeBean.salary.salariesPK.fromDate}" id="txtToDate" required="true" requiredMessage="phai nhap">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                        </h:inputText>
+                        <h:message for="txtToDate"/>
+                        
+                        <h:outputLabel value="Employee"/>
+                        <h:selectOneMenu value="#{employeeBean.salary.salariesPK.empNo}">
+                            <f:selectItems value="#{employeeBean.employees}" var="e" itemLabel="#{e.firstName}" itemValue="#{e.empNo}" />
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:commandButton value="Add" action="#{employeeBean.addNewSalary()}"/>
+                    <h:commandButton value="Back" action="#{employeeBean.goBack()}"/>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -55,6 +55,13 @@ public class EmployeeDAO {
         em.getTransaction().commit();
     }
     
+    public void addNewSalary(Salaries s){
+        EntityManager em = Persistence.createEntityManagerFactory("WebApplication1PU").createEntityManager();
+        em.getTransaction().begin();
+        em.persist(s);
+        em.getTransaction().commit();
+    }
+    
     public void updateEmployee(Employees e){
         EntityManager em = Persistence.createEntityManagerFactory("WebApplication1PU").createEntityManager();
         Employees employee = em.find(Employees.class, e.getEmpNo());
